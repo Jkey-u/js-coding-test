@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>삼각형 판별하기</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+                let answer="YES", max;
+                let sum = a + b + c;
+
+                // 가장 긴 막대의 길이 < 두 막대의 길이의의 합
+                if(a > b) {
+                    max = a;
+                } else {
+                    max = b;
+                }
+
+                if((sum-max) <= max) answer = "NO";
+                return answer;
+            }
+
+            console.log(solution(6, 7, 11));
+        </script>
+    </body>
+</html>
