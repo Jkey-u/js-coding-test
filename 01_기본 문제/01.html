@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>세 수 중 최솟값</title>
+    </head>
+    <body>
+        <script>
+            function solution(a, b, c){
+                let answer; //가장 작은 수
+
+                if(a < b) {
+                    answer = a;
+                } else {
+                    answer = b;
+                }
+
+                if(c < answer) {
+                    answer = c;
+                } 
+                return answer;
+            }
+
+            console.log(solution(2, 5, 1));
+        </script>
+    </body>
+</html>
