@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>일곱 난쟁이</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){
+                let answer = arr; //얕은복사
+                let sum = arr.reduce((a,b) => a+b, 0); //누적 합
+                
+                // [Solution] 난쟁이 두명을 제외시킨 키의 합이 100
+                for(let i=0; i<arr.length-1; i++) {
+                    for(let j=i+1; j<arr.length+1; j++) {
+                        if(sum-(arr[i] + arr[j])===100) {
+                            answer.splice(j, 1); //특정 인덱스 제거
+                            answer.splice(i, 1);
+                        }
+                    }
+                }
+                return answer;
+            }
+            
+            let arr=[20, 7, 23, 19, 10, 15, 25, 8, 13];
+            console.log(solution(arr));
+        </script>
+    </body>
+</html>
