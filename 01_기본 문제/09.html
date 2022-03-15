@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>A를 #으로 변환</title>
+    </head>
+    <body>
+        <script>
+            function solution1(s){
+                let answer="";
+
+                for(let x of s) {
+                    if(x === 'A') {
+                        answer+='#';
+                    } else {
+                        answer+=x;
+                    }
+                }
+                return answer;
+            }
+
+            function solution2(s) {
+                let answer = s; //string은 값 복사
+                answer = answer.replace(/A/g, "#"); //global
+                return answer;
+            }
+            
+            let str="BANANA";
+            console.log(solution1(str));
+        </script>
+    </body>
+</html>
