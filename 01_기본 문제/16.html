@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>중복문자 제거</title>
+    </head>
+    <body>
+        <script>
+            function solution1(s){  
+                let answer = '';
+
+                for(let x of s){
+                    if(!answer.includes(x)) {
+                        answer += x;
+                    }
+                }
+                return answer;1
+            }
+
+            function solution2(s){  
+                let answer = '';
+
+                for(let i=0; i<s.length; i++){
+                    if(s.indexOf(s[i]) === i) answer += s[i];
+                }
+                return answer;
+            }
+
+            console.log(solution1("ksekkset"));
+        </script>
+    </body>
+</html>
