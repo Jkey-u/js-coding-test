@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>격자판 최대합</title>
+    </head>
+    <body>
+        <script>
+            function solution(arr){  
+                let answer;
+                let sum = [];
+                let sum1 = 0; //행
+                let sum2 = 0; //열
+                let sum3 = 0; //대각선
+
+                for(let i=0 ; i<arr.length ; i++){
+                    for(let j=0 ; j<arr.length ; j++) {
+                        if(i===j) {
+                            // 대각선 합
+                            sum3 += arr[i][j];
+                        } else if(i === 0) {
+                            // 행의 합
+                            sum1 += arr[0][j];
+                        } else if(j === 0) {
+                            // 열의 합
+                            sum2 += arr[i][0];
+                        }
+                    }
+                }
+                answer = Math.max(sum1, sum2, sum3);
+                return answer;
+            }
+
+            function solution2(arr) {
+                let answer = Number.MIN_SAFE_INTEGER;
+                let n = arr.length;
+                let sum1 = sum2 = 0;
+
+                for(let i=0; i<n; i++) {
+                    sum1 = sum2 = 0;
+                    for(let j=0; j<n; j++) {
+                        sum1 += arr[i][j]; //행 고정
+                        sum2 += arr[j][i]; //열 고정
+                    }
+                    answer = Math.max(answer, sum1, sum2);
+                }
+                
+                sum1 = sum2 = 0;
+                for(let i=0; i<n; i++){
+                    sum1 += arr[i][i];
+                    sum2 += arr[i][n-i-1];
+                }
+                answer = Math.max(answer, sum1, sum2);
+                return answer;
+            }
+
+            let arr=[[10, 13, 10, 12, 15], 
+                     [12, 39, 30, 23, 11],
+                     [11, 25, 50, 53, 15],
+                     [19, 27, 29, 37, 27],
+                     [19, 13, 30, 13, 19]];
+            console.log(solution2(arr));
+        </script>
+    </body>
+</html>
