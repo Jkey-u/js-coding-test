@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>회문 문자열</title>
+    </head>
+    <body>
+        <script>
+            // [ 회문문자열 ] 앞에서 읽을 때나 뒤에서 읽을 때나 같은 문자열
+            function solution1(s) {
+                let answer = "YES";
+                s = s.toLowerCase(); //대소문자를 구분하지 않음
+                let len = s.length;
+
+                for(let i=0; i<Math.floor(len/2); i++) {
+                    if(s[i] !== s[len-i-1]) {
+                        answer = "NO";
+                    } 
+                }
+                return answer;
+            }
+
+            function solution2(s) {
+                let answer = "YES";
+                s = s.toLowerCase();
+                console.log(s.split('').reverse().join('')); //['g', 'o', 'o', 'o', 'g'] --(join)--> 'gooog'
+                if(s !== s.split('').reverse().join('')) {
+                    answer = "NO";
+                }
+                return answer;
+            }
+            
+            let str="goooG";
+            console.log(solution1(str));
+        </script>
+    </body>
+</html>
