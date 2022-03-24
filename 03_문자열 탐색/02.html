@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>유효한 팰린드롬</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){
+                let answer = "YES";
+                let len = s.length;
+
+                // 정규식을 활용해서 필요한 문자열만 추출
+                // 알파벳만 가지고 회문을 검사하며, 대소문자를 구분하지 않음
+                s = s.toLowerCase().replace(/[^a-z]/g, ''); 
+
+                // split() : 문자배열을 리턴
+                if(s.split('').reverse().join('') !== s) {
+                    answer = "NO";
+                }
+                return answer;
+            }
+            
+            let str="found7, time: study; Yduts; emit, 7Dnuof";
+            console.log(solution(str));
+        </script>
+    </body>
+</html>
