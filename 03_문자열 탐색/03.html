@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>숫자만 추출</title>
+    </head>
+    <body>
+        <script>
+            function solution1(str){
+                let answer = '';
+                let len = str.length;
+                
+                for(let x of str) {
+                    if(!isNaN(x)) answer += x; // string
+                }
+                return parseInt(answer); // 정수화
+            }
+
+            function solution2(str){
+                let answer = '';
+                let len = str.length;
+                
+                for(let x of str) {
+                    if(!isNaN(x)) answer = answer*10+Number(x);
+                }
+                return answer;
+            }
+            
+            let str="g0en2T0s8eSoft";
+            console.log(solution1(str)); // 208
+        </script>
+    </body>
+</html>
