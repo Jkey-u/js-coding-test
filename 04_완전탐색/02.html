@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>뒤집은 소수</title>
+    </head>
+    <body>
+        <script>
+            // *** [소수판별]  
+            function isPrime(num) {
+                if(num === 1) return false;
+                
+                //1과 자신 제외
+                for(let i=2; i<parseInt(Math.sqrt(num)); i++) {
+                    if(num%i === 0) return false;
+                }
+                return true;
+            }
+
+            function solution1(arr)   {
+                let answer = [];
+                let res = 0;
+                
+                for(let x of arr) {
+                    res = Number(x.toString().split('').reverse().join('')); //각 자연수를 뒤집은 후 합치기
+                    if(isPrime(res)) {
+                        answer.push(x);
+                    }
+                }
+                return answer;
+            }
+
+            function solution2(arr) {
+                let answer = [];
+                
+                for(let x of arr) {
+                    let res = 0; 
+
+                    while(x) {
+                        // *** [숫자 뒤집기] 307
+                        res = res*10 + x%10; //0+7 70+0 700+3 
+                        x = parseInt(x/10); //30 3 0
+                    }
+                    if(isPrime(res)) {
+                        answer.push(res);
+                    }
+                }
+                return answer;
+            }
+            
+            let arr=[32, 55, 62, 20, 250, 370, 200, 30, 100];
+            console.log(solution2(arr)); //23 2 73 2 3
+        </script>
+    </body>
+</html>
