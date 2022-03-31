@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>K번째 큰 수</title>
+    </head>
+    <body>
+        <script>
+            function solution(n, k, card){
+                let answer;
+                let temp = new Set(); // *** [Set Object] : 중복이 제거된 자료구조
+
+                // 카드를 3회 뽑음
+                for(let a=0; a<n; a++) {
+                    for(let b=a+1; b<n; b++) {
+                        for(let c=b+1; c<n; c++) {
+                            temp.add(card[a]+card[b]+card[c]); //Set 자료형에 요소 추가
+                        }
+                    }
+                }
+                // console.log(temp);
+                let d = Array.from(temp).sort((a, b) => b-a); //Set은 sort를 지원하지 않음
+                answer = d[k-1]; //k번째
+                return answer;
+            }
+            
+            let arr=[13, 15, 34, 23, 45, 65, 33, 11, 26, 42]; 
+            console.log(solution(10, 3, arr)); //143
+        </script>
+    </body>
+</html>
