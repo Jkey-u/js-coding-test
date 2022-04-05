@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>학급 회장(Hash Map)</title>
+    </head>
+    <body>
+        <script>
+            function solution(s){  
+                let answer = 0;
+                let temp = [...s];
+                let list = ["A", "B", "C", "D", "E"];
+                let count = 0;
+                
+                for(let x of list) {
+                    count = temp.filter((item)=> {return item === x}).length;
+                    answer = Math.max(count, answer);
+                }
+                return answer;
+            }
+
+            // Hash Map
+            function solution2(s){
+                let answer;
+                let sH = new Map(); //key-value
+                
+                for(let x of s) {
+                    if(sH.has(x)) {
+                        sH.set(x, sH.get(x)+1);
+                    } else {
+                        sH.set(x, 1);
+                    }
+                }
+                // console.log(sH);
+
+                let max = Number.MIN_SAFE_INTEGER;
+                for(let [key, val] of sH) {
+                    // console.log(key, val);
+                    if(val>max) {
+                        max = val;
+                        answer = key;
+                    }
+                }
+                return answer;
+            }
+
+            let str="BACBACCACCBDEDE";
+            console.log(solution2(str));
+        </script>
+    </body>
+</html>
