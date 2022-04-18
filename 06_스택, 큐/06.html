@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>공주 구하기(Queue)</title>
+    </head>
+    <body>
+        <script>
+            // 큐(Queue) : push(), shift() 활용
+            function solution(n, k){
+                let answer = 0;
+                let queue = Array.from({length: n}, (value, index) => index+1); // [1, 2, 3, 4, 5, 6, 7, 8]
+                console.log(queue);
+
+                while(queue.length) {
+                    for(let i=1; i<k; i++) {
+                        queue.push(queue.shift());
+                    }
+                    queue.shift();
+                    if(queue.length === 1) answer = queue.shift();
+                }
+                return answer;
+            }
+
+            console.log(solution(8, 3)); //7
+        </script>
+    </body>
+</html>
