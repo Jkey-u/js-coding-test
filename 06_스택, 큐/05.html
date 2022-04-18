@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>쇠막대기(Stack)</title>
+    </head>
+    <body>
+        <script>
+            // 괄호 활용 문제는 Stack를 활용하자
+            function solution(s){
+                let answer = 0;
+                let stack = [];
+                for(let i=0; i<s.length; i++) {
+                    if(s[i] === '(') {
+                        stack.push(s[i]);
+                    } else {
+                        stack.pop();
+                        if(s[i-1] === '(') { //레이저 판별
+                            answer += stack.length;
+                        } else {
+                            answer += 1
+                        }
+                    }
+                }
+                return answer;
+            }
+            
+            let a="()(((()())(())()))(())";
+            console.log(solution(a)); //17
+        </script>
+    </body>
+</html>
