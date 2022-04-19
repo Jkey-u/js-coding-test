@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>교육과정 설계(Queue)</title>
+    </head>
+    <body>
+        <script>
+            function solution(need, plan){
+                let answer = 'YES';
+                let n = [...need];
+                let p = [...plan];
+                let list = [];
+
+                for(let x of p) {
+                    if(n.includes(x)) list.push(x);
+                }
+
+                if(JSON.stringify(n) !== JSON.stringify(list)) {
+                    answer = 'NO';
+                }
+                return answer;
+            }
+
+            function solution2(need, plan){
+                let answer = 'YES';
+                let queue = need.split('');
+                
+                for(let x of plan) {
+                    if(queue.includes(x)) {
+                        if(x !== queue.shift()) {
+                            console.log(queue);
+                            return "NO";
+                        } 
+                    }
+                }
+                if(queue.length>0) return "NO";
+                return answer;
+            }
+            
+            let a="CBA";
+            let b="CBDAGE";
+            console.log(solution2(a, b));
+        </script>
+    </body>
+</html>
