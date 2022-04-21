@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>삽입정렬(Insertion Sort)</title>
+    </head>
+    <body>
+        <!-- https://www.youtube.com/watch?v=Bor_CRWEIXo -->
+        <script>
+            function solution(arr){
+                let answer = arr;
+
+                for(let i=0; i<arr.length; i++) {
+                    let temp=arr[i]; // 해당 턴의 비교군
+                    let j;
+                    for(j=i-1; j>=0; j--) {
+                        if(temp<arr[j]) {
+                            arr[j+1] = arr[j];
+                        } else {
+                            break;
+                        }
+                    }
+                    arr[j+1] = temp;
+                }
+                return answer;
+            }
+
+            function solution2(arr){
+                let answer = [];
+                answer.push(arr[0]);
+
+                for(let i=1; i<arr.length; i++) {
+                    for(let j=0; j<answer.length; j++) {
+                        if(arr[i]<answer[j]){
+                            answer.splice(j, 0, arr[i]);
+                            break;
+                        } 
+                    }
+                }
+                return answer;
+            }
+
+            let arr=[11, 7, 5, 6, 10, 9];
+            console.log(solution(arr)); //5 6 7 9 10 11
+        </script>
+    </body>
+</html>
