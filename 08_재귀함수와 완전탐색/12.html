@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>조합의 경우수(메모이제이션)</title>
+    </head>
+    <body>
+        <script>
+            function solution(n, r){         
+                let answer = [];
+                let dy = Array.from(Array(3), () => Array(5).fill(0)); // 2차원 배열 : 3행 5열
+                // console.log(dy);
+
+                function DFS(n, r){
+                    if(dy[n][r]>0) return dy[n][r]; // 메모이제이션 : 성능개선
+                    if(n===r || r===0) return 1;
+                    else return dy[n][r] = DFS(n-1, r-1)+DFS(n-1, r);
+                }
+                answer = DFS(n, r);
+                return answer;
+            }
+
+            console.log(solution(5, 3));
+        </script>
+    </body>
+</html>
